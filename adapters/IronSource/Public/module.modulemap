@@ -1,0 +1,12 @@
+framework module IronSourceAdMobAdapter {
+  umbrella header "GADRVAdapterIronSource.h"
+
+  export *
+  module * { export * }
+
+  link framework "Foundation"
+  link framework "UIKit"
+
+  header "GADISAdapterIronSource"
+  header "GADRVAdapterIronSource"
+}
