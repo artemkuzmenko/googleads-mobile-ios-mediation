@@ -19,6 +19,6 @@
 
 /// Adapter for communicating with the IronSource Network to fetch reward-based video ads and
 /// interstitial ads.
-@interface GADMAdapterIronSource : NSObject <GADMRewardBasedVideoAdNetworkAdapter, GADMAdNetworkAdapter, ISInterstitialDelegate, ISRewardedVideoDelegate>
+@interface GADMAdapterIronSource : NSObject <GADMRewardBasedVideoAdNetworkAdapter, GADCustomEventInterstitial, ISInterstitialDelegate, ISRewardedVideoDelegate>
 
 @end
