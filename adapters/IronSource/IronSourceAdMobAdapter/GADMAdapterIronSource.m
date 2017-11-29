@@ -56,6 +56,7 @@ NSString *const kGADMAdapterIronSourceInterstitialPlacement = @"interstitialPlac
 }
 
 - (instancetype)initWithRewardBasedVideoAdNetworkConnector: (id<GADMRewardBasedVideoAdNetworkConnector>)connector {
+    NSLog(@"GADMAdapterIronSource.h | initWithRewardBasedVideoAdNetworkConnector");
     if (!connector) {
         return nil;
     }
@@ -67,21 +68,33 @@ NSString *const kGADMAdapterIronSourceInterstitialPlacement = @"interstitialPlac
 }
 
 - (void)setUp {
+    NSLog(@"GADMAdapterIronSource.h | setUp");
     id<GADMRewardBasedVideoAdNetworkConnector> strongConnector = _rewardbasedVideoAdConnector;
     
+    NSString *serverParameter = [[strongConnector credentials] objectForKey:GADCustomEventParametersServer];
+    NSData *jsonData = [serverParameter dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *parseJsonError;
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&parseJsonError];
+    
     NSString* applicationKey = @"";
-    if ([[strongConnector credentials] objectForKey:kGADMAdapterIronSourceAppKey]) {
-        applicationKey = [[strongConnector credentials] objectForKey:kGADMAdapterIronSourceAppKey];
+    
+    if (parseJsonError) {
+        [strongConnector adapter:self didFailToSetUpRewardBasedVideoAdWithError:parseJsonError];
+        return;
     }
     
-    if ([[strongConnector credentials] objectForKey:kGADMAdapterIronSourceIsTestEnabled] != nil) {
-        _isTestEnabled = [[[strongConnector credentials] objectForKey:kGADMAdapterIronSourceIsTestEnabled] boolValue];
+    if ([dict objectForKey:kGADMAdapterIronSourceAppKey]) {
+        applicationKey = [dict objectForKey:kGADMAdapterIronSourceAppKey];
+    }
+    
+    if ([dict objectForKey:kGADMAdapterIronSourceIsTestEnabled] != nil) {
+        _isTestEnabled = [[dict objectForKey:kGADMAdapterIronSourceIsTestEnabled] boolValue];
     } else {
         _isTestEnabled = NO;
     }
     
-    if ([[strongConnector credentials] objectForKey:@"placementName"] != nil){
-        _rewardedVideoPlacementName = [[strongConnector credentials] objectForKey:@"placementName"];
+    if ([dict objectForKey:@"placementName"] != nil){
+        _rewardedVideoPlacementName = [dict objectForKey:@"placementName"];
     } else {
         _rewardedVideoPlacementName = nil;
     }
@@ -178,6 +191,7 @@ NSString *const kGADMAdapterIronSourceInterstitialPlacement = @"interstitialPlac
 #pragma mark Utils Methods
 
 -(void) initIronSourceSDKWithAppKey:(NSString*)appKey adUnit:(NSString*)adUnit {
+    NSLog(@"GADMAdapterIronSource.h | initIronSourceSDKWithAppKey, adUnit: %@", adUnit);
     // 1 - We are not sending user ID from adapters anymore,
     //     the IronSource SDK will take care of this identifier
     
