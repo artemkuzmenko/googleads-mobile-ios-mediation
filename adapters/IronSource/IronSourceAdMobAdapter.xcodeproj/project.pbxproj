@@ -387,6 +387,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = AdMobAdapter;
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = "arm64 armv7 i386 x86_64";
 			};
 			name = Debug;
 		};
@@ -397,6 +398,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = AdMobAdapter;
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = "arm64 armv7 i386 x86_64";
 			};
 			name = Release;
 		};
@@ -405,6 +407,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = NLKYWCU5C3;
 				PRODUCT_NAME = AdMobAdapter;
+				VALID_ARCHS = "arm64 armv7 i386 x86_64";
 			};
 			name = Debug;
 		};
@@ -413,6 +416,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = NLKYWCU5C3;
 				PRODUCT_NAME = AdMobAdapter;
+				VALID_ARCHS = "arm64 armv7 i386 x86_64";
 			};
 			name = Release;
 		};
@@ -421,6 +425,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = NLKYWCU5C3;
 				PRODUCT_NAME = AdMobAdapter;
+				VALID_ARCHS = "arm64 armv7 i386 x86_64";
 			};
 			name = Debug;
 		};
@@ -429,6 +434,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = NLKYWCU5C3;
 				PRODUCT_NAME = AdMobAdapter;
+				VALID_ARCHS = "arm64 armv7 i386 x86_64";
 			};
 			name = Release;
 		};

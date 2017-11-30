@@ -52,10 +52,10 @@ ditto "${FRAMEWORK_LOCATION}" "${OUTPUT_FOLDER}/${FRAMEWORK_NAME}.framework"
 echo $FRAMEWORK_NAME 
 
 # Create Modules directory.
-#mkdir -p "${OUTPUT_FOLDER}/${FRAMEWORK_NAME}.framework/Modules"
+mkdir -p "${OUTPUT_FOLDER}/${FRAMEWORK_NAME}.framework/Modules"
 
 # Copy the module map to modules directory.
-#/bin/cp -a "${MODULE_MAP_PATH}/module.modulemap" "${OUTPUT_FOLDER}/${FRAMEWORK_NAME}.framework/Modules/module.modulemap"
+/bin/cp -a "${MODULE_MAP_PATH}/module.modulemap" "${OUTPUT_FOLDER}/${FRAMEWORK_NAME}.framework/Modules/module.modulemap"
 
 # Convenience step to copy the framework to the tester directory
 if [ -d "${UNIVERSAL_OUTPUTFOLDER}" ]; then
