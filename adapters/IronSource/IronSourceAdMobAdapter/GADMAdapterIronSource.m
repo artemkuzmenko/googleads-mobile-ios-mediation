@@ -81,12 +81,12 @@ NSString *const kGADMAdapterIronSourceInterstitialPlacement = @"interstitialPlac
     }
     
     _rewardedVideoPlacementName = @"";
-    if ([[strongConnector credentials] objectForKey:kGADMAdapterIronSourceAppKey]) {
+    if ([[strongConnector credentials] objectForKey:kGADMAdapterIronSourceRewardedVideoPlacement]) {
         _rewardedVideoPlacementName = [[strongConnector credentials] objectForKey:kGADMAdapterIronSourceRewardedVideoPlacement];
     }
     
     _interstitialPlacementName = @"";
-    if ([[strongConnector credentials] objectForKey:kGADMAdapterIronSourceAppKey]) {
+    if ([[strongConnector credentials] objectForKey:kGADMAdapterIronSourceInterstitialPlacement]) {
         _interstitialPlacementName = [[strongConnector credentials] objectForKey:kGADMAdapterIronSourceInterstitialPlacement];
     }
     
@@ -137,12 +137,12 @@ NSString *const kGADMAdapterIronSourceInterstitialPlacement = @"interstitialPlac
     }
     
     _rewardedVideoPlacementName = @"";
-    if ([[strongConnector credentials] objectForKey:kGADMAdapterIronSourceAppKey]) {
+    if ([[strongConnector credentials] objectForKey:kGADMAdapterIronSourceRewardedVideoPlacement]) {
         _rewardedVideoPlacementName = [[strongConnector credentials] objectForKey:kGADMAdapterIronSourceRewardedVideoPlacement];
     }
     
     _interstitialPlacementName = @"";
-    if ([[strongConnector credentials] objectForKey:kGADMAdapterIronSourceAppKey]) {
+    if ([[strongConnector credentials] objectForKey:kGADMAdapterIronSourceInterstitialPlacement]) {
         _interstitialPlacementName = [[strongConnector credentials] objectForKey:kGADMAdapterIronSourceInterstitialPlacement];
     }
     
@@ -212,7 +212,7 @@ NSString *const kGADMAdapterIronSourceInterstitialPlacement = @"interstitialPlac
         id<GADMRewardBasedVideoAdNetworkConnector> strongConnector = _rewardbasedVideoAdConnector;
         [strongConnector adapterDidSetUpRewardBasedVideoAd:self];
     } else if ([adUnit isEqualToString:IS_INTERSTITIAL]) {
-        
+        // we don't need to send any callbacks
     }
 }
 
